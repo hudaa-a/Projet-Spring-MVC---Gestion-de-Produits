@@ -110,39 +110,4 @@ public class ProductController {
         return "redirect:/user/index";
     }
 
-    // ==================== ADDITIONAL FEATURES (Optional) ====================
-
-    /*
-     * Show form to edit existing product (admin only)
-     * Uncomment if you want to add edit functionality
-     */
-    /*
-    @GetMapping("/admin/editProduct")
-    @PreAuthorize("hasRole('ADMIN')")
-    public String showEditProductForm(@RequestParam("id") Long productId, Model model) {
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid product ID: " + productId));
-        model.addAttribute("product", product);
-        return "EditProduct";
-    }
-    */
-
-    /*
-     * Update existing product (admin only)
-     * Uncomment if you want to add edit functionality
-     */
-    /*
-    @PostMapping("/admin/updateProduct")
-    @PreAuthorize("hasRole('ADMIN')")
-    public String updateProduct(@RequestParam("id") Long productId,
-                               @Valid Product product,
-                               BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "EditProduct";
-        }
-        product.setId(productId);
-        productRepository.save(product);
-        return "redirect:/user/index";
-    }
-    */
 }
