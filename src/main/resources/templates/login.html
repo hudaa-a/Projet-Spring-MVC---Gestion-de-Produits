@@ -1,17 +1,42 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layout1">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Products</title>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}" />
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container p-3" layout:fragment="content1">
- <h3 class="text-danger">Not Authorised</h3>
+<div layout:fragment="content"> <!-- CHANGED to "content" -->
+    <div th:if="${param.error}" class="alert alert-danger text-center mt-3">
+        Invalid username or password!
+    </div>
+    <!-- Système de grille Bootstrap pour centrer le formulaire -->
+    <div class="row"><!-- Crée une ligne Bootstrap -->
+        <div class="col col-md-6 offset-md-3">
+            <!-- Carte Bootstrap pour un bel affichage -->
+            <div class="card"> <!-- Conteneur de type carte -->
+                <div class="card-header">Authentification</div>
+                <div class="card-body"><!-- Corps de la carte -->
+                    <form method="post" th:action="@{/login}">
+                        <!-- Champ Username -->
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" name="username" class="form-control">
+                        </div>
+                        <!-- Champ Password -->
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control">
+                        </div>
+                        <!-- Bouton de soumission -->
+                        <button class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<script th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

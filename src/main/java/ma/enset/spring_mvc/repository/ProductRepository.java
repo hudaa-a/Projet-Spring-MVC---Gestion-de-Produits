@@ -1,4 +1,7 @@
 package ma.enset.spring_mvc.repository;
 
-public interface ProductRepository {
+import ma.enset.spring_mvc.entities.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
 }
